@@ -61,6 +61,9 @@
   .popup-title { font-weight: 600; font-size: 13.5px; margin-bottom: 6px; padding-right: 14px; }
   .popup-rank { font-weight: 400; font-size: 11px; color: var(--ink-3); margin-top: 2px; }
   .pctchip { font-size: 9.5px; background: #eef3fb; color: var(--accent); border-radius: 4px; padding: 1px 4px; font-weight: 600; }
+  .softchip { font-size: 9.5px; background: #e8f4e9; color: #227534; border-radius: 4px; padding: 1px 4px; font-weight: 600; }
+  .midchip { font-size: 9.5px; background: #f4efe4; color: #8a5a00; border-radius: 4px; padding: 1px 4px; font-weight: 600; }
+  .hardchip { font-size: 9.5px; background: #fbe8e8; color: #a12b2b; border-radius: 4px; padding: 1px 4px; font-weight: 600; }
   .popup-grid { display: grid; grid-template-columns: auto auto; gap: 2px 14px; font-size: 12.5px; min-width: 250px; }
   .popup-grid .k { color: var(--ink-2); }
   .popup-grid .psec { font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-3); margin-top: 5px; }
@@ -191,6 +194,7 @@
       <label><input type="checkbox" id="p-comp"> Direct competitors (same cuisine)</label>
       <label><input type="checkbox" id="p-qsr"> QSR competitors (independents, chains excluded)</label>
       <label><input type="checkbox" id="p-anchor"> Bars &amp; venues (sized by reviews)</label>
+      <label><input type="checkbox" id="p-byob"> Bars with no kitchen (BYO-food friendly)</label>
       <label><input type="checkbox" id="p-college"> Colleges (sized by enrollment)</label>
       <label><input type="checkbox" id="p-jobs"> Job centers (sized by employees)</label>
       <label><input type="checkbox" id="p-lease"> Lease listings (Crexi)
@@ -374,6 +378,12 @@ function scoreRank(h) {
   for (const x of data.hexes) if (clientScore(x) > mine) better++;
   return better + 1;
 }
+function compStr(h) {
+  if (h.comp_str == null) return '<span class="softchip">none within 8km ✓</span>';
+  const label = h.comp_str >= 4.55 ? "hard to outclass" : h.comp_str >= 4.3 ? "solid" : "beatable";
+  const cls = h.comp_str >= 4.55 ? "hardchip" : h.comp_str >= 4.3 ? "midchip" : "softchip";
+  return `${h.comp_str}★ <span class="${cls}">${label}</span>`;
+}
 function weakest(h) {
   return [["demand", h.demand], ["untapped gap", h.gap], ["complements", h.complements],
           ["activity", h.activity], ["traffic exposure", h.exposure_n], ["new openings", h.openings_n]]
@@ -402,7 +412,8 @@ function popupHtml(h) {
       <span class="psec">Site</span><span></span>
       <span class="k">Traffic (AADT nearby)</span><span class="v">${fmt(h.aadt)} ${topPct("aadt", h.aadt)}</span>
       <span class="k">Bus departures / parking</span><span class="v">${fmt(h.bus_departures)} / ${fmt(h.parking_spaces)}</span>
-      <span class="k">Avg Google rating (area)</span><span class="v">${h.avg_rating != null ? h.avg_rating + "★ " + topPct("avg_rating", h.avg_rating) : "—"}</span>
+      <span class="k">Nearest direct competitor</span><span class="v">${h.near_comp ? h.near_comp[0].slice(0, 20) + " · " + h.near_comp[1] + "km" : "—"}</span>
+      <span class="k">Their strength (nearest 3)</span><span class="v">${compStr(h)}</span>
       <span class="k">Complements / activity</span><span class="v">${h.complements} / ${h.activity}</span>
       <span class="k">Competition pressure</span><span class="v">${h.competition}</span>
       <span class="k">National chains near</span><span class="v">${h.chains_near}</span>
@@ -505,12 +516,12 @@ function render() {
 function fly(lat, lon) { map.flyTo([lat, lon], 14); }
 
 // ---- competitor / anchor pins ----
-let pinData = null, compLayer = null, qsrLayer = null, anchorLayer = null, collegeLayer = null, jobsLayer = null, leaseData = null, leaseLayer = null;
+let pinData = null, compLayer = null, qsrLayer = null, anchorLayer = null, byobLayer = null, collegeLayer = null, jobsLayer = null, leaseData = null, leaseLayer = null;
 const ANCHOR_COLOR = { brewery: "#c86f22", bar: "#af601c", nightclub: "#7d4310", casino: "#7d4310", venue: "#55554f" };
 function togglePins() {
   if (!pinData) return;
-  for (const l of [compLayer, qsrLayer, anchorLayer, collegeLayer, jobsLayer]) if (l) l.remove();
-  compLayer = qsrLayer = anchorLayer = collegeLayer = jobsLayer = null;
+  for (const l of [compLayer, qsrLayer, anchorLayer, byobLayer, collegeLayer, jobsLayer]) if (l) l.remove();
+  compLayer = qsrLayer = anchorLayer = byobLayer = collegeLayer = jobsLayer = null;
   if (document.getElementById("p-comp").checked) {
     compLayer = L.layerGroup(pinData.competitors.map(p =>
       L.circleMarker([p.lat, p.lon], { radius: 7, color: "#fdfdfc", weight: 2, fillColor: "#d03b3b", fillOpacity: 1 })
@@ -529,6 +540,13 @@ function togglePins() {
         radius: 4 + Math.min(5, Math.log10(1 + (p.reviews || 0)) * 1.6),
         color: "#fdfdfc", weight: 1.5, fillColor: ANCHOR_COLOR[p.kind] || "#55554f", fillOpacity: 0.9,
       }).bindTooltip(`${p.kind}: ${p.name}`, { direction: "top" }))).addTo(map);
+  }
+  if (document.getElementById("p-byob").checked) {
+    byobLayer = L.layerGroup((pinData.foodless_bars || []).map(p =>
+      L.circleMarker([p.lat, p.lon], {
+        radius: 4 + Math.min(5, Math.log10(1 + (p.reviews || 0)) * 1.6),
+        color: "#2b1608", weight: 2, fillColor: "#f0b429", fillOpacity: 0.95,
+      }).bindTooltip(`🍻 ${p.name} — likely no kitchen`, { direction: "top" }))).addTo(map);
   }
   if (document.getElementById("p-college").checked) {
     collegeLayer = L.layerGroup(pinData.colleges.map(p =>
@@ -558,7 +576,7 @@ function toggleLease() {
     L.circleMarker([l.lat, l.lon], { radius: 6, color: "#fdfdfc", weight: 1.5, fillColor: "#256abf", fillOpacity: 1 })
       .bindPopup(`<b>${l.name || ""}</b><br>${l.address}<br>${l.rate_sqft_yr ? l.rate_sqft_yr + "/sqft/yr" : "rate on request"}${l.sqft_min ? " · " + l.sqft_min.toLocaleString() + (l.sqft_max && l.sqft_max !== l.sqft_min ? "–" + l.sqft_max.toLocaleString() : "") + " sqft" : ""}<br><a href="${l.url}" target="_blank">View on Crexi</a>`))).addTo(map);
 }
-for (const id of ["p-comp", "p-qsr", "p-anchor", "p-college", "p-jobs"])
+for (const id of ["p-comp", "p-qsr", "p-anchor", "p-byob", "p-college", "p-jobs"])
   document.getElementById(id).onchange = togglePins;
 document.getElementById("p-lease").onchange = toggleLease;
 document.getElementById("sqft-min").oninput = toggleLease;
@@ -700,6 +718,7 @@ const CMP_METRICS = [
   ["Land $/sqft (sold)", h => h.land_ppsf, -1],
   ["Median rent", h => h.rent, -1],
   ["Nat. chains near", h => h.chains_near, 1],
+  ["Comp. strength ★ (nearest 3)", h => h.comp_str, -1],
 ];
 document.getElementById("compare-go").onclick = () => {
   const pins = sitePins.filter(p => p.h);
