@@ -151,7 +151,10 @@
       <li><b>Adjust weighting</b> — the sliders re-score the whole map live.</li>
     </ul>
     <p class="about-caveat">Dollar figures are estimates for comparing sites against each other,
-    not revenue projections. Click any hex for its full report.</p>
+    not revenue projections. Click any hex for its full report. Data pulled September 2026.
+    Spot something wrong about a place you know?
+    <a href="https://github.com/raumemon/site-scout/issues/new" target="_blank">Report it</a> —
+    local knowledge makes the model better.</p>
     <button id="about-close">Got it</button>
   </div>
 </div>
@@ -230,8 +233,10 @@
       Delivery play ranks by Huff-gravity capture: a typical new restaurant competing for every
       zone's dining dollars against all existing venues on real drive times, plus cheap rent.
       Sources: ACS 2023, Census LODES 2022, Google Places, OpenStreetMap, WA LCB, Spokane County
-      assessor, WSDOT/ITD, STA GTFS, Crexi, r/Spokane + r/CoeurdAlene. Dollar figures are estimates
-      for comparing sites, not revenue projections.
+      assessor, WSDOT/ITD/Spokane Valley, STA GTFS, Crexi, r/Spokane + r/CoeurdAlene. Dollar figures
+      are estimates for comparing sites, not revenue projections. Data pulled September 2026.
+      The map view and mode are saved in the URL, so copying the address bar shares your exact view.
+      <a href="https://github.com/raumemon/site-scout/issues/new" target="_blank">Report something wrong →</a>
     </div>
   </div>
 </div>
@@ -283,7 +288,17 @@ function clientValue(h) {
 })();
 
 const map = L.map("map", { zoomControl: true, preferCanvas: true, zoomSnap: 0.5 });
-map.fitBounds([[47.60, -117.47], [47.74, -116.73]]); // Spokane through CdA, nothing beyond
+// restore a shared view from the URL hash, else the default corridor fit
+(function () {
+  const m = location.hash.match(/v=([\d.]+),(-[\d.]+),([\d.]+)/);
+  if (m) map.setView([+m[1], +m[2]], +m[3]);
+  else map.fitBounds([[47.60, -117.47], [47.74, -116.73]]); // Spokane through CdA
+})();
+map.on("moveend", () => {
+  const c = map.getCenter();
+  const tag = `#m=${mode}&v=${c.lat.toFixed(4)},${c.lng.toFixed(4)},${map.getZoom()}`;
+  history.replaceState(null, "", tag);
+});
 new ResizeObserver(() => map.invalidateSize()).observe(document.getElementById("map"));
 let renderedRes = null;
 map.on("zoomend", () => { if (data && displayRes() !== renderedRes) render(); });
@@ -584,6 +599,14 @@ document.getElementById("sqft-max").oninput = toggleLease;
 fetch(`pins.json?ts=${Date.now()}`).then(r => r.ok ? r.json() : null).then(d => { pinData = d; }).catch(() => {});
 fetch(`listings.json?ts=${Date.now()}`).then(r => r.ok ? r.json() : null).then(d => { leaseData = d; }).catch(() => {});
 
+const hashMode = (location.hash.match(/m=(\w+)/) || [])[1];
+if (hashMode && hashMode !== "score") {
+  // apply shared mode once data arrives
+  const iv = setInterval(() => {
+    if (data && MODES[hashMode]) { document.getElementById(MODES[hashMode].btn).click(); clearInterval(iv); }
+  }, 300);
+  setTimeout(() => clearInterval(iv), 8000);
+}
 for (const [m, cfg] of Object.entries(MODES)) {
   document.getElementById(cfg.btn).onclick = () => {
     mode = m;
