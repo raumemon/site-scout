@@ -188,7 +188,8 @@
     </div>
     <div class="legend"><span id="leg-min">low</span><div class="ramp" id="ramp"></div><span id="leg-max">high</span></div>
     <div class="pinrow">
-      <label><input type="checkbox" id="p-comp"> Competitors</label>
+      <label><input type="checkbox" id="p-comp"> Direct competitors (same cuisine)</label>
+      <label><input type="checkbox" id="p-qsr"> QSR competitors (independents, chains excluded)</label>
       <label><input type="checkbox" id="p-anchor"> Bars &amp; venues (sized by reviews)</label>
       <label><input type="checkbox" id="p-college"> Colleges (sized by enrollment)</label>
       <label><input type="checkbox" id="p-jobs"> Job centers (sized by employees)</label>
@@ -504,16 +505,23 @@ function render() {
 function fly(lat, lon) { map.flyTo([lat, lon], 14); }
 
 // ---- competitor / anchor pins ----
-let pinData = null, compLayer = null, anchorLayer = null, collegeLayer = null, jobsLayer = null, leaseData = null, leaseLayer = null;
+let pinData = null, compLayer = null, qsrLayer = null, anchorLayer = null, collegeLayer = null, jobsLayer = null, leaseData = null, leaseLayer = null;
 const ANCHOR_COLOR = { brewery: "#c86f22", bar: "#af601c", nightclub: "#7d4310", casino: "#7d4310", venue: "#55554f" };
 function togglePins() {
   if (!pinData) return;
-  for (const l of [compLayer, anchorLayer, collegeLayer, jobsLayer]) if (l) l.remove();
-  compLayer = anchorLayer = collegeLayer = jobsLayer = null;
+  for (const l of [compLayer, qsrLayer, anchorLayer, collegeLayer, jobsLayer]) if (l) l.remove();
+  compLayer = qsrLayer = anchorLayer = collegeLayer = jobsLayer = null;
   if (document.getElementById("p-comp").checked) {
     compLayer = L.layerGroup(pinData.competitors.map(p =>
       L.circleMarker([p.lat, p.lon], { radius: 7, color: "#fdfdfc", weight: 2, fillColor: "#d03b3b", fillOpacity: 1 })
         .bindTooltip(`⚔️ ${p.name}`, { direction: "top" }))).addTo(map);
+  }
+  if (document.getElementById("p-qsr").checked) {
+    qsrLayer = L.layerGroup((pinData.qsr || []).map(p =>
+      L.circleMarker([p.lat, p.lon], {
+        radius: 3.5 + Math.min(4, Math.log10(1 + (p.reviews || 0)) * 1.3),
+        color: "#fdfdfc", weight: 1.5, fillColor: "#ec835a", fillOpacity: 0.9,
+      }).bindTooltip(`🍔 ${p.name}`, { direction: "top" }))).addTo(map);
   }
   if (document.getElementById("p-anchor").checked) {
     anchorLayer = L.layerGroup(pinData.anchors.map(p =>
@@ -550,7 +558,7 @@ function toggleLease() {
     L.circleMarker([l.lat, l.lon], { radius: 6, color: "#fdfdfc", weight: 1.5, fillColor: "#256abf", fillOpacity: 1 })
       .bindPopup(`<b>${l.name || ""}</b><br>${l.address}<br>${l.rate_sqft_yr ? l.rate_sqft_yr + "/sqft/yr" : "rate on request"}${l.sqft_min ? " · " + l.sqft_min.toLocaleString() + (l.sqft_max && l.sqft_max !== l.sqft_min ? "–" + l.sqft_max.toLocaleString() : "") + " sqft" : ""}<br><a href="${l.url}" target="_blank">View on Crexi</a>`))).addTo(map);
 }
-for (const id of ["p-comp", "p-anchor", "p-college", "p-jobs"])
+for (const id of ["p-comp", "p-qsr", "p-anchor", "p-college", "p-jobs"])
   document.getElementById(id).onchange = togglePins;
 document.getElementById("p-lease").onchange = toggleLease;
 document.getElementById("sqft-min").oninput = toggleLease;
