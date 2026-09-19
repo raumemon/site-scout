@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Site Scout</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/h3-js@4.1.0/dist/h3-js.umd.js"></script>
+<link rel="stylesheet" href="vendor/leaflet.css">
+<script src="vendor/leaflet.js"></script>
+<script src="vendor/h3-js.js"></script>
 <style>
   :root {
     --ink: #1a1a19; --ink-2: #55554f; --ink-3: #8a8a82;
@@ -241,6 +241,15 @@
   </div>
 </div>
 <script>
+if (typeof L === "undefined" || typeof h3 === "undefined") {
+  document.body.insertAdjacentHTML("afterbegin",
+    '<div style="background:#fbe8e8;color:#a12b2b;padding:12px 16px;font-size:14px">' +
+    'The map libraries failed to load. If you use a content blocker, allow this site and reload.</div>');
+  throw new Error("libraries missing");
+}
+window.addEventListener("error", e => {
+  if (String(e.message).includes("libraries missing")) return;
+}, true);
 const BLUES = ["#cde2fb","#b7d3f6","#9ec5f4","#86b6ef","#6da7ec","#5598e7","#3987e5","#2a78d6","#256abf","#1c5cab","#184f95","#104281","#0d366b"];
 const ORANGES = ["#fde3cd","#fbd6b6","#f9c99e","#f7bc86","#f5ae6e","#f2a057","#ef913f","#e07f2c","#c86f22","#af601c","#965115","#7d4310","#66360b"];
 const PURPLES = ["#eadcf6","#ddc9ef","#d0b6e8","#c3a3e1","#b590da","#a87ed2","#9a6cca","#8b5ac1","#7c49b4","#6b3ba2","#5a2e8f","#49227b","#391a65"];
