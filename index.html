@@ -560,7 +560,7 @@ function togglePins() {
       L.circleMarker([p.lat, p.lon], {
         radius: 6 + Math.min(16, p.jobs / 900), color: "#fdfdfc", weight: 1.5,
         fillColor: "#0d366b", fillOpacity: 0.55,
-      }).bindTooltip(`💼 ≈${p.jobs.toLocaleString()} jobs in this zone`, { direction: "top" }))).addTo(map);
+      }).bindTooltip(`💼 ≈${p.jobs.toLocaleString()} jobs in this zone${p.anchor ? " — " + p.anchor : ""}`, { direction: "top" }))).addTo(map);
   }
 }
 function toggleLease() {
