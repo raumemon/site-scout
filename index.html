@@ -234,7 +234,8 @@
 const BLUES = ["#cde2fb","#b7d3f6","#9ec5f4","#86b6ef","#6da7ec","#5598e7","#3987e5","#2a78d6","#256abf","#1c5cab","#184f95","#104281","#0d366b"];
 const ORANGES = ["#fde3cd","#fbd6b6","#f9c99e","#f7bc86","#f5ae6e","#f2a057","#ef913f","#e07f2c","#c86f22","#af601c","#965115","#7d4310","#66360b"];
 const PURPLES = ["#eadcf6","#ddc9ef","#d0b6e8","#c3a3e1","#b590da","#a87ed2","#9a6cca","#8b5ac1","#7c49b4","#6b3ba2","#5a2e8f","#49227b","#391a65"];
-const GREENS = ["#d2ecd4","#bce3bf","#a5d9a9","#8ecf94","#76c47e","#5db869","#44ab54","#329944","#2a873c","#227534","#1a632b","#125122","#0c4019"];
+const ROSES = ["#fcdde6","#f9cbd8","#f5b9cb","#f1a7bd","#ec94b0","#e681a2","#de6d94","#d25a86","#c14778","#ab3768","#932a58","#7a1e48","#611538"];
+const TEALS = ["#d3ecec","#bfe3e3","#aad9da","#95cfd1","#7fc5c8","#68babf","#50afb6","#38a2ab","#2b9099","#227d86","#1a6a73","#135860","#0d464d"];
 
 let mode = "score", data = null, layer = null, vibes = {};
 
@@ -328,11 +329,11 @@ function vibeMetric(h) {
 const MODES = {
   score:    { btn: "m-score",    ramp: BLUES,   metric: h => clientScore(h) },
   value:    { btn: "m-value",    ramp: ORANGES, metric: h => clientValue(h) },
-  delivery: { btn: "m-delivery", ramp: GREENS,  metric: h => h.delivery },
+  delivery: { btn: "m-delivery", ramp: ROSES,   metric: h => h.delivery },
   vibes:    { btn: "m-vibes",    ramp: PURPLES, metric: h => vibeMetric(h) },
   res:      { btn: "m-res",      ramp: BLUES,   metric: h => h.lens_res },
   work:     { btn: "m-work",     ramp: ORANGES, metric: h => h.lens_work },
-  sweet:    { btn: "m-sweet",    ramp: GREENS,  metric: h => Math.round(Math.sqrt(h.lens_res * h.lens_work)) },
+  sweet:    { btn: "m-sweet",    ramp: TEALS,   metric: h => Math.round(Math.sqrt(h.lens_res * h.lens_work)) },
   lunch:    { btn: "m-lunch",    ramp: ORANGES, metric: h => Math.round(0.75 * h.lens_work + 0.25 * h.lens_res) },
   dinner:   { btn: "m-dinner",   ramp: BLUES,   metric: h => Math.round(0.65 * h.lens_res + 0.35 * h.complements) },
 };
