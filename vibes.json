@@ -1,0 +1,795 @@
+{
+ "neighborhoods": {
+  "Airway Heights": {
+   "n_posts": 100,
+   "n_mentions": 100,
+   "mentions_recent_18mo": 69,
+   "mentions_prior_18mo": 31,
+   "momentum_pct": null,
+   "sentiment": "mixed",
+   "trend": "rising",
+   "summary": "Airway Heights is described as booming, with a new Yoke's grocery cited as proof of an exploded population and the casinos anchoring most visitor traffic, but discussion is dominated by a fight over a proposed giant data center and the town's limited water supply. Residents praise standouts like Tagliare delicatessen while complaining that most local food options are low quality.",
+   "themes": [
+    "rapid population growth",
+    "casino-driven visitor traffic",
+    "data center and water supply fight",
+    "thin quality food scene",
+    "wildfire and smoke events"
+   ],
+   "watchouts": [
+    "constrained water supply and possible utility rate hikes tied to the data center",
+    "wildfire evacuations and smoke in late summer",
+    "traffic passes through to casinos rather than lingering locally"
+   ],
+   "openings": [
+    "New Yoke's grocery store (opened)",
+    "Tagliare delicatessen (open, strongly praised)",
+    "proposed Big Rock data center (contested, pending)"
+   ],
+   "news_sentiment": "mixed",
+   "news": [
+    "City-manager dispute and prison smuggling case in the news",
+    "Childcare expansion planned; casino keeps booking major acts (Ice Cube)"
+   ]
+  },
+  "Audubon / NW": {
+   "n_posts": 34,
+   "n_mentions": 34,
+   "mentions_recent_18mo": 14,
+   "mentions_prior_18mo": 10,
+   "momentum_pct": 40,
+   "sentiment": "positive",
+   "trend": "stable",
+   "summary": "Audubon and Downriver come across as a tight, friendly residential pocket where life centers on the park, with neighbors organizing basketball games, group chats, block parties, and even free soup during the fires. Residents actively wish for more walkability and small commercial life, and still mourn a closed Korean cafe on Northwest Boulevard, hinting at unmet demand for neighborhood food spots.",
+   "themes": [
+    "park-centered community life",
+    "strong neighbor cohesion",
+    "walkability wishes",
+    "little existing food and retail",
+    "family-oriented residential streets"
+   ],
+   "watchouts": [
+    "low commercial foot traffic on Northwest Boulevard",
+    "occasional street racing and car break-ins"
+   ],
+   "openings": [
+    "Ephata Cafe on Northwest Boulevard closed and is still missed"
+   ],
+   "news_sentiment": "neutral",
+   "news": [
+    "Park upgrades and a summer concert series; one shooting at Audubon Park reported"
+   ]
+  },
+  "Browne's Addition": {
+   "n_posts": 79,
+   "n_mentions": 79,
+   "mentions_recent_18mo": 30,
+   "mentions_prior_18mo": 18,
+   "momentum_pct": 67,
+   "sentiment": "mixed",
+   "trend": "stable",
+   "summary": "Browne's Addition gets praised as Spokane's most walkable historic neighborhood, with eclectic architecture, a dining corner, good transit, and the relocated Saturday farmers market. The same threads consistently flag downtown spillover issues, including car theft and break-ins, transients, drugs, and noise.",
+   "themes": [
+    "historic walkable neighborhood",
+    "close to downtown",
+    "farmers market anchor",
+    "car theft and prowling",
+    "renter-heavy population"
+   ],
+   "watchouts": [
+    "frequent vehicle theft and break-ins",
+    "transient and drug activity spilling from downtown",
+    "noise from trains and traffic"
+   ],
+   "openings": [
+    "Cafe Buenos Aires reopened (late 2024)",
+    "Spokane Farmers Market moved to Coeur d'Alene Park (2023)"
+   ],
+   "news_sentiment": "mixed",
+   "news": [
+    "Fireweed Baking Co. opening from returning Spokane chef",
+    "Summer concert series and ArtFest keep drawing crowds",
+    "A homicide and a domestic-violence shooting dominated recent coverage"
+   ]
+  },
+  "Downtown CdA": {
+   "n_posts": 100,
+   "n_mentions": 100,
+   "mentions_recent_18mo": 38,
+   "mentions_prior_18mo": 34,
+   "momentum_pct": 12,
+   "sentiment": "mixed",
+   "trend": "mixed",
+   "summary": "Heavy physical investment (new Thomas George tower, resort expansion, Sherman pocket park redo) collides with locals lamenting a hollowed-out core: Airbnbs spreading into nearby residential blocks, vacation homes sitting empty, and the farmers market losing its downtown permit. Summer tourist foot traffic is strong and the strip stays walkable at night, but political street theater on Sherman periodically makes national news.",
+   "themes": [
+    "tourist-driven Sherman Ave strip",
+    "high-rise redevelopment wave",
+    "Airbnb conversion of nearby housing",
+    "seasonal foot traffic swings",
+    "political street friction"
+   ],
+   "watchouts": [
+    "highly seasonal revenue",
+    "retail churn with a running closures list",
+    "occasional protest optics on Sherman"
+   ],
+   "openings": [
+    "Thomas George tower coming downtown",
+    "Roosevelt Hotel sold and demolished",
+    "downtown lavender ice cream spot closed"
+   ],
+   "news_sentiment": "positive",
+   "news": [
+    "Two hotel projects rising downtown",
+    "Street fair, farmers market, Oktoberfest anchoring the season",
+    "National downtown accreditation; city debating noise limits"
+   ]
+  },
+  "Downtown Spokane": {
+   "n_posts": 100,
+   "n_mentions": 100,
+   "mentions_recent_18mo": 100,
+   "mentions_prior_18mo": 0,
+   "momentum_pct": null,
+   "sentiment": "positive",
+   "trend": "rising",
+   "summary": "Locals push back hard on the idea that downtown is unsafe, pointing to record foot traffic gains, steady residential growth, and lots of new housing, while agreeing property crime and visible homelessness are real. New food and entertainment businesses keep appearing, events fill the core most weekends, and the city is considering looser food truck rules.",
+   "themes": [
+    "growing foot traffic and residents",
+    "safety reputation better than perception",
+    "active events and festival calendar",
+    "new food businesses opening",
+    "visible homelessness and property crime"
+   ],
+   "watchouts": [
+    "car break-ins and parking security complaints",
+    "area south of the rail tracks seen as sketchy",
+    "some suburban customers still avoid downtown"
+   ],
+   "openings": [
+    "Izzie's K-Dogs Korean corn dogs opened downtown",
+    "new gym planned for downtown (The Dirt report)",
+    "new bar opened with a novel delivery gimmick",
+    "Punk Rock Flea Market launching in the former downtown Rite Aid"
+   ],
+   "news_sentiment": "positive",
+   "news": [
+    "Seven-story housing project cleared at Browne and Main; more housing demolition underway",
+    "Wave of openings: Crave NW, Wave Sushi, Izzie's K-Dogs, a new PNW restaurant, an art gallery",
+    "Office vacancy rising; a Division St 7-Eleven declared a chronic nuisance"
+   ]
+  },
+  "East Sprague": {
+   "n_posts": 23,
+   "n_mentions": 23,
+   "mentions_recent_18mo": 11,
+   "mentions_prior_18mo": 8,
+   "momentum_pct": 38,
+   "sentiment": "mixed",
+   "trend": "stable",
+   "summary": "Reddit discussion on East Sprague is thin and much of it is noise, but what exists paints the close-in city stretch as rough, with a shooting thread and residents describing drug houses on nearby streets. Farther east on the Valley portion of Sprague, a permit suggesting a Trader Joe's generated real excitement, showing appetite for better retail on the corridor.",
+   "themes": [
+    "rough reputation on the city stretch",
+    "thin and noisy discussion",
+    "Valley corridor retail excitement",
+    "cheap commercial space corridor"
+   ],
+   "watchouts": [
+    "gunfire and drug activity perceptions near the city section",
+    "corridor identity split between city and Valley segments"
+   ],
+   "openings": [
+    "Trader Joe's rumored for 13414 E Sprague in the Valley (old ShopKo site)"
+   ],
+   "news_sentiment": "positive",
+   "news": [
+    "Journal of Business: multiple projects rising on Sprague Avenue",
+    "$10M in street improvements underway (construction disruption in the meantime)"
+   ]
+  },
+  "Five Mile": {
+   "n_posts": 28,
+   "n_mentions": 28,
+   "mentions_recent_18mo": 16,
+   "mentions_prior_18mo": 9,
+   "momentum_pct": 78,
+   "sentiment": "mixed",
+   "trend": "stable",
+   "summary": "Five Mile is a growing suburban prairie area where the standout food signal is Cascadia, an upscale gastropub locals describe as always packed, so much so that its owners are opening a second spot on North Monroe. Otherwise the plaza is losing retail like Joann Fabrics, a long-running pizza parlor is gone, and a local gym scandal plus an extremist flyering incident drew negative attention.",
+   "themes": [
+    "proven demand for quality dining (Cascadia packed)",
+    "suburban residential growth on the prairie",
+    "retail vacancies in the shopping plaza",
+    "local business reputation scrutiny"
+   ],
+   "watchouts": [
+    "gym harassment scandal shows how fast local word of mouth turns",
+    "extremist flyering incident near Rosauers",
+    "infrastructure strain as the prairie builds out"
+   ],
+   "openings": [
+    "Kindred Public House coming to North Monroe from Cascadia's owners",
+    "Joann Fabrics Five Mile closing in liquidation",
+    "Five Mile Heights Pizza Parlor closed"
+   ],
+   "news_sentiment": "negative",
+   "news": [
+    "2026 wildfires forced Level 3 evacuations on Five Mile Prairie; fire crossed the river into the city",
+    "Water district suing the county over reliable water access",
+    "Avey Townhomes proposed"
+   ]
+  },
+  "CdA \u2014 4th St": {
+   "n_posts": 12,
+   "n_mentions": 12,
+   "mentions_recent_18mo": 4,
+   "mentions_prior_18mo": 2,
+   "momentum_pct": 100,
+   "sentiment": "mixed",
+   "trend": "rising",
+   "summary": "The 4th Street and Sherman corridors show an active restaurant churn, with newer spots like People's Waffle, The Goat, and the Big Flipper pinball bar earning local praise, and an Italian restaurant slated for the former Collective Kitchen space on Sherman. Sherman itself is viewed as a crowded tourist strip that some locals dismiss as turn-and-burn quality, while 4th Street reads as the more local-serving stretch.",
+   "themes": [
+    "active restaurant openings and turnover",
+    "tourist-heavy Sherman strip",
+    "locals prefer 4th Street spots",
+    "summer traffic congestion",
+    "midtown construction momentum"
+   ],
+   "watchouts": [
+    "locals stereotype Sherman Ave venues as tourist traps",
+    "intense seasonal swings, with July crowds and quieter winters",
+    "regional extremism reputation occasionally surfaces in discussion"
+   ],
+   "openings": [
+    "People's Waffle breakfast spot (new on 4th Street)",
+    "The Big Flipper pinball bar (newly opened)",
+    "Italian restaurant coming to 501 E Sherman (Collective Kitchen closed)",
+    "Coyol Cocina & Tequila (opened in the old Chili's building)"
+   ],
+   "news_sentiment": "positive",
+   "news": [
+    "New restaurant opened on Sherman Avenue",
+    "Sherman Tower topped off \u2014 Hagadone's downtown milestone",
+    "Annual street fair keeps Sherman as the event spine"
+   ]
+  },
+  "Garland District": {
+   "n_posts": 24,
+   "n_mentions": 24,
+   "mentions_recent_18mo": 19,
+   "mentions_prior_18mo": 3,
+   "momentum_pct": 200,
+   "sentiment": "positive",
+   "trend": "stable",
+   "summary": "Direct Reddit discussion of Garland is fairly thin, but the district comes up warmly as a cute historic strip anchored by the Garland Theater, the Milk Bottle, Garland Brew Werks, and a summer market, with Garland Pride now held there. Complaints are minor, mostly parking, some run-down properties, and occasional planter vandalism.",
+   "themes": [
+    "historic theater-anchored strip",
+    "affordable charming housing nearby",
+    "community events and Pride",
+    "limited parking"
+   ],
+   "watchouts": [
+    "tight residential and street parking",
+    "some neglected properties nearby"
+   ],
+   "openings": [],
+   "news_sentiment": "mixed",
+   "news": [
+    "Two new restaurants planned in the district; Temple Tavern opened with scratch Italian",
+    "$10M townhome project and a new apartment building planned",
+    "Several shootings, including one at a district bar, made repeated news"
+   ]
+  },
+  "Gonzaga / Logan": {
+   "n_posts": 30,
+   "n_mentions": 30,
+   "mentions_recent_18mo": 11,
+   "mentions_prior_18mo": 12,
+   "momentum_pct": -8,
+   "sentiment": "neutral",
+   "trend": "stable",
+   "summary": "Discussion is dominated by Gonzaga students, parents, and new arrivals asking about housing, safety, and where to eat, with steady demand for casual dining near campus. Safety questions about the Logan area come up occasionally but answers are generally reassuring, and there is little talk of the neighborhood itself changing.",
+   "themes": [
+    "student and university-driven demand",
+    "rental housing questions",
+    "restaurant recommendation requests",
+    "mild safety concerns near Division",
+    "visiting-parent dining trips"
+   ],
+   "watchouts": [
+    "customer base swings with the academic calendar",
+    "recurring safety questions about blocks near Ruby and Division"
+   ],
+   "openings": [],
+   "news_sentiment": "mixed",
+   "news": [
+    "U-District night market and street fair season running",
+    "City planning to address displacement in South Logan",
+    "A police shooting and a fatal fire led recent coverage"
+   ]
+  },
+  "Hayden": {
+   "n_posts": 100,
+   "n_mentions": 100,
+   "mentions_recent_18mo": 47,
+   "mentions_prior_18mo": 43,
+   "momentum_pct": 9,
+   "sentiment": "mixed",
+   "trend": "stable",
+   "summary": "Hayden reads as a quieter, partly retiree suburb north of CdA that people use for value, with locals loyal to spots like The Porch, Parallel 47, and Radicci's, plus chains like Jersey Mike's reportedly on the way. Growth and roundabout construction continue, but threads flag high housing costs, low wages, staffing struggles, and the area's lingering far-right reputation.",
+   "themes": [
+    "quiet suburban and retiree feel",
+    "loyal local restaurant following",
+    "steady residential growth",
+    "low wages and staffing struggles",
+    "conservative political reputation"
+   ],
+   "watchouts": [
+    "restaurant labor is hard to keep given local wage and rent gap",
+    "older, early-to-bed demographic limits nightlife",
+    "regional extremism reputation can deter some customers and hires"
+   ],
+   "openings": [
+    "Jersey Mike's (reported coming near Capones)",
+    "sushi and bulgogi restaurant (closed, building for sale)",
+    "The Porch and Parallel 47 (open, repeatedly recommended)"
+   ],
+   "news_sentiment": "positive",
+   "news": [
+    "Cochinito Taqueria expanding with a second location in Hayden",
+    "New artisan marketplace opened",
+    "Hayden Beverage landed a major distribution partnership"
+   ]
+  },
+  "Hillyard": {
+   "n_posts": 100,
+   "n_mentions": 100,
+   "mentions_recent_18mo": 54,
+   "mentions_prior_18mo": 45,
+   "momentum_pct": 20,
+   "sentiment": "mixed",
+   "trend": "rising",
+   "summary": "Hillyard splits opinion: crime stats and open drug use keep its rough reputation alive, but it was named Spokane's fastest growing neighborhood and its first designated creative arts district, with cheap space drawing new bars, coffee, and shops ahead of the north-south freeway completion. A transphobic coffee stand sign also drew citywide protest in 2026.",
+   "themes": [
+    "cheap space and gentrification debate",
+    "new arts district designation",
+    "high crime reputation",
+    "visible drug use and homelessness",
+    "freeway completion upside"
+   ],
+   "watchouts": [
+    "highest crime perception in the city",
+    "open drug use and park encampments",
+    "national chain (MOD Pizza) closed its location"
+   ],
+   "openings": [
+    "Bear Totem D&D bar opened (Oct 2023)",
+    "Derailer Coffee opened (2023)",
+    "Hillyard Bicycle opening in Kehoe building (2025)",
+    "MOD Pizza closed, space vacant (2026)"
+   ],
+   "news_sentiment": "mixed",
+   "news": [
+    "Creative District wrapped a celebrated first year as the county's arts hub",
+    "Tacos y Tequila and Hi-Jinx festivals drawing visitors",
+    "A suspicious-death investigation and a coffee-stand slur controversy made news"
+   ]
+  },
+  "Kendall Yards": {
+   "n_posts": 100,
+   "n_mentions": 100,
+   "mentions_recent_18mo": 34,
+   "mentions_prior_18mo": 25,
+   "momentum_pct": 36,
+   "sentiment": "positive",
+   "trend": "rising",
+   "summary": "Kendall Yards is repeatedly described as the walkable success story of Spokane, with a dense restaurant cluster, a grocery store, the hugely popular night market, and more apartments in the pipeline. The gripes are about cost, event parking, and it feeling bougie rather than about safety.",
+   "themes": [
+    "dense walkable dining cluster",
+    "popular night market",
+    "ongoing apartment development",
+    "high rents and upscale image",
+    "river trail foot traffic"
+   ],
+   "watchouts": [
+    "premium rents and lease costs",
+    "parking pressure during events",
+    "turnover among food tenants"
+   ],
+   "openings": [
+    "Italian sandwich shop opened with long lines (Nov 2025)",
+    "large new apartment building filed (2026)",
+    "Taichi bubble tea closed (early 2025)",
+    "Uprise Brewing opened (2022)"
+   ],
+   "news_sentiment": "positive",
+   "news": [
+    "200-unit apartment building proposed for vacant west-end site",
+    "$4M apartment project underway",
+    "Fratello's opened to strong demand; Ruins temporarily closed",
+    "Night Market expanding with more live music"
+   ]
+  },
+  "Liberty Lake": {
+   "n_posts": 100,
+   "n_mentions": 100,
+   "mentions_recent_18mo": 79,
+   "mentions_prior_18mo": 21,
+   "momentum_pct": null,
+   "sentiment": "mixed",
+   "trend": "rising",
+   "summary": "Liberty Lake comes across as an affluent, fast-growing, family-oriented suburb with steady new construction, though locals joke about its petty rich-person reputation and it became a flashpoint for weekly protests at the Tesla dealership. Food talk is thin beyond Fujiyama and the Mode wellness complex, suggesting an underserved dining market for the demographics.",
+   "themes": [
+    "affluent bedroom community",
+    "rapid growth and construction",
+    "recurring political protests",
+    "family and golf lifestyle",
+    "limited dining and nightlife options"
+   ],
+   "watchouts": [
+    "sleepy evenings with little nightlife culture",
+    "protest activity and political tension near the Tesla dealership",
+    "commute friction from new ramp meters and I-90 speed cameras"
+   ],
+   "openings": [
+    "Top Golf (building permit filed, ground work status debated)",
+    "Mode wellness and ceramics complex (open, polarizing reception)",
+    "Tesla dealership (open, focus of weekly protests)"
+   ],
+   "news_sentiment": "mixed",
+   "news": [
+    "Condo and brush fires plus a shooting led coverage",
+    "Groundworks opening a Liberty Lake office"
+   ]
+  },
+  "Midtown CdA": {
+   "n_posts": 14,
+   "n_mentions": 14,
+   "mentions_recent_18mo": 6,
+   "mentions_prior_18mo": 2,
+   "momentum_pct": 100,
+   "sentiment": "positive",
+   "trend": "rising",
+   "summary": "Midtown CdA is talked about as a quiet, older neighborhood that is visibly redeveloping, with new mixed-use buildings, a Trader Joe's nearby, and fresh food businesses like a gluten-free sourdough bakery, while Midtown Bluebird gets repeat recommendations from locals. Families like its walkability to downtown, though city plowing and services are seen as favoring downtown.",
+   "themes": [
+    "mixed-use redevelopment",
+    "walkable to downtown",
+    "growing local food reputation",
+    "older housing stock",
+    "second priority for city services"
+   ],
+   "watchouts": [
+    "trades in downtown's shadow for services and tourist spend",
+    "aging buildings can mean costly renovations, and tradespeople reportedly prefer pricier areas"
+   ],
+   "openings": [
+    "Crescent Moon Sourdough gluten-free bakery (opened behind Trader Joe's)",
+    "two new mixed-use buildings (under construction)",
+    "Trader Joe's (opened nearby after earlier skepticism)",
+    "Midtown Bluebird (open, repeatedly recommended)"
+   ],
+   "news_sentiment": "positive",
+   "news": [
+    "Syringa/Garnet team opened Bluebird restaurant",
+    "Viral 100-year-old-tree little library brought warm attention",
+    "A midtown shooting case also made news"
+   ]
+  },
+  "Millwood": {
+   "n_posts": 42,
+   "n_mentions": 42,
+   "mentions_recent_18mo": 20,
+   "mentions_prior_18mo": 7,
+   "momentum_pct": 186,
+   "sentiment": "positive",
+   "trend": "stable",
+   "summary": "Millwood reads as a small, safe, tight-knit valley enclave where residents rally for each other and cherish quirky local spots like Joe's House, a beloved hole-in-the-wall bar and restaurant on Argonne. The main friction is the Argonne corridor itself, widely called one of the worst traffic bottlenecks in Spokane.",
+   "themes": [
+    "strong community spirit",
+    "safe small-town feel",
+    "beloved local hole-in-the-wall dining",
+    "Argonne traffic congestion",
+    "paper mill odor questions"
+   ],
+   "watchouts": [
+    "severe rush-hour gridlock on Argonne deters cross-town visits",
+    "occasional paper mill and industrial smells",
+    "tiny trade area with limited nightlife draw"
+   ],
+   "openings": [
+    "Spokane Stained Glass retail shop and classes (opened, N Argonne)",
+    "Joe's House bar and restaurant (active local favorite)",
+    "Millwood Brewery (established, mentioned as a meetup spot)"
+   ],
+   "news_sentiment": "mixed",
+   "news": [
+    "Businesses publicly frustrated by long-running Argonne Road construction",
+    "Aloha Vintage marketplace opened"
+   ]
+  },
+  "North Division": {
+   "n_posts": 87,
+   "n_mentions": 87,
+   "mentions_recent_18mo": 45,
+   "mentions_prior_18mo": 16,
+   "momentum_pct": 181,
+   "sentiment": "mixed",
+   "trend": "stable",
+   "summary": "North Division is discussed as a busy, car-centric retail strip rather than a neighborhood, saturated with chains and drive-thrus, with jokes about the number of chicken places and suspicions about sketchy storefronts. Traffic congestion, drive-thru lines blocking lanes, and a fatal gas station shooting color the safety picture, though the constant churn of new fast-casual openings shows the corridor's traffic still attracts operators.",
+   "themes": [
+    "high-traffic auto retail corridor",
+    "chain and fast-casual saturation",
+    "traffic and drive-thru congestion",
+    "crime incidents at gas stations",
+    "low walkability"
+   ],
+   "watchouts": [
+    "fatal shooting at a Division gas station",
+    "drive-thru queues spilling into traffic lanes",
+    "planned Division bus rapid transit could bring construction disruption"
+   ],
+   "openings": [
+    "Panda Express built on the former White Elephant site",
+    "new protein bowl restaurant noted on North Division",
+    "Crumbl Cookies opened on North Division"
+   ],
+   "news_sentiment": "mixed",
+   "news": [
+    "Old Trails Fire (3,000 acres) threatened north Spokane structures",
+    "Huge turnouts at north-park rallies show the corridor's draw",
+    "A fatal crash and a stabbing made recent news"
+   ]
+  },
+  "North Monroe": {
+   "n_posts": 23,
+   "n_mentions": 23,
+   "mentions_recent_18mo": 10,
+   "mentions_prior_18mo": 4,
+   "momentum_pct": 150,
+   "sentiment": "neutral",
+   "trend": "rising",
+   "summary": "Reddit discussion of North Monroe is relatively thin and mixed with traffic gripes, but the road diet is credited with turning the corridor into more of a destination, and operators are betting on it with Cascadia's Kindred Public House and a new winery joining Ladder Coffee and the antique shops. One comment notes the similar Prohibition restaurant closed just south of the new activity.",
+   "themes": [
+    "road diet corridor revival",
+    "antique and vintage shopping strip",
+    "new restaurant investment",
+    "traffic and construction complaints"
+   ],
+   "watchouts": [
+    "a comparable restaurant nearby closed recently",
+    "corridor still transitional block by block"
+   ],
+   "openings": [
+    "Kindred Public House by Cascadia announced (2024)",
+    "new winery coming to North Monroe (2024)",
+    "Prohibition closed half a mile south (2024)"
+   ],
+   "news_sentiment": "positive",
+   "news": [
+    "Cascadia team opened Kindred Public House food hub on Monroe",
+    "Another new restaurant bringing elevated bar food",
+    "Gonzaga Bulletin praised the corridor's local feel"
+   ]
+  },
+  "Post Falls": {
+   "n_posts": 50,
+   "n_mentions": 50,
+   "mentions_recent_18mo": 50,
+   "mentions_prior_18mo": 0,
+   "momentum_pct": null,
+   "sentiment": "neutral",
+   "trend": "rising",
+   "summary": "Fast-growing commuter town where national franchises are arriving (Jersey Mike's confirmed, a Chick-fil-A rumored for a high-visibility US-95 corner) and housing supply is tight and expensive. Locals praise a handful of scratch kitchens like Republic Kitchen, but the independent scene is sparse for the population being added.",
+   "themes": [
+    "rapid residential growth",
+    "national chains moving in",
+    "sparse independent dining",
+    "commuter bedroom town"
+   ],
+   "watchouts": [
+    "staff housing affordability",
+    "low evening foot traffic outside anchors"
+   ],
+   "openings": [
+    "Jersey Mike's coming to Post Falls",
+    "Chick-fil-A rumored at a US-95 corner",
+    "Republic Kitchen praised as scratch kitchen"
+   ],
+   "news_sentiment": "positive",
+   "news": [
+    "SEL expanding manufacturing with a new facility",
+    "$100M+ surge in healthcare construction; Kootenai Health broke ground on Prairie campus",
+    "Jacklin Northwest planning a retail center; commercial node annexed at Prairie and Chase"
+   ]
+  },
+  "Riverstone": {
+   "n_posts": 28,
+   "n_mentions": 28,
+   "mentions_recent_18mo": 9,
+   "mentions_prior_18mo": 9,
+   "momentum_pct": 0,
+   "sentiment": "mixed",
+   "trend": "rising",
+   "summary": "Riverstone is a planned mixed-use district that keeps adding condos, farmers market traffic, and Atlas Waterfront development, and families find it a convenient safe pick with walkable food, a movie theater, and trail access. Locals repeatedly knock it as a manufactured, parking-heavy mall vibe that goes quiet by 8pm, so evening business is a real question.",
+   "themes": [
+    "master-planned mixed-use district",
+    "ongoing condo and waterfront construction",
+    "family-friendly daytime traffic",
+    "early evening shutdown",
+    "manufactured character complaints"
+   ],
+   "watchouts": [
+    "foot traffic drops sharply in the evening",
+    "seen as bland and touristy-adjacent versus downtown's character",
+    "car-centric layout dominated by parking lots"
+   ],
+   "openings": [
+    "Cornerstone four-story condo and retail building (built)",
+    "Kootenai farmers market Wednesday location (relocated to Riverstone)",
+    "Atlas Waterfront buildings (phased development)",
+    "Hotworx studio (signage up, status unclear)"
+   ],
+   "news_sentiment": "positive",
+   "news": [
+    "Riverstone development sold after two decades \u2014 new ownership momentum",
+    "New commercial building to bring fresh dining and retail",
+    "Regal theater reopened; amphitheater getting shade covers"
+   ]
+  },
+  "Shadle Park": {
+   "n_posts": 100,
+   "n_mentions": 100,
+   "mentions_recent_18mo": 42,
+   "mentions_prior_18mo": 31,
+   "momentum_pct": 35,
+   "sentiment": "mixed",
+   "trend": "stable",
+   "summary": "Shadle reads as an affordable, family, working-class area with a genuinely active community scene around the library and parks, but the shopping center and Walmart anchor a steady stream of petty crime, drug, and safety complaints. Food options skew chains, a Panda Express hygiene scandal got heavy attention, and people asking for a laid back pub note that a favorite game bar has closed, suggesting unmet demand for casual sit-down spots.",
+   "themes": [
+    "family residential with community events",
+    "crime complaints around the shopping center",
+    "chain-heavy food options",
+    "2026 wildfire evacuations nearby",
+    "demand for casual neighborhood hangouts"
+   ],
+   "watchouts": [
+    "theft and drug activity around Shadle Center and Walmart",
+    "locals publicly call out restaurant hygiene issues",
+    "August 2026 fires displaced households in the area"
+   ],
+   "openings": [
+    "Nat 20 game bar noted as closed",
+    "Shadle Center Starbucks unionized (first in Spokane)",
+    "indoor tennis facility proposed at Shadle Park"
+   ],
+   "news_sentiment": "neutral",
+   "news": [
+    "Coverage is mostly high-school sports; an armed-student report at the high school made news"
+   ]
+  },
+  "South Hill / Manito": {
+   "n_posts": 100,
+   "n_mentions": 100,
+   "mentions_recent_18mo": 100,
+   "mentions_prior_18mo": 0,
+   "momentum_pct": null,
+   "sentiment": "positive",
+   "trend": "mixed",
+   "summary": "The South Hill reads as Spokane's established, leafy, family neighborhood, seen as safe and slightly snobby, with engaged residents and steady demand but a demographic that skews older. Food news cuts both ways: Anatolia Grill and a Vietnamese coffee bar opened, while Twigs closed its location and MUV Fitness abandoned a long-promised gym, leaving questions around the 37th and Grand retail node, and residents note there is no movie theater on the hill.",
+   "themes": [
+    "affluent established residential area",
+    "safe but older-skewing demographic",
+    "retail churn at key corners",
+    "strong neighborhood loyalty",
+    "unmet demand for entertainment venues"
+   ],
+   "watchouts": [
+    "anchor closures around 37th and Grand",
+    "porch piracy and car break-ins",
+    "a 2026 hate-motivated attack rattled residents"
+   ],
+   "openings": [
+    "Anatolia Grill opened (2026)",
+    "Vietnamese coffee bar opened in a nail salon (2026)",
+    "Twigs Bistro closed, seeking new South Hill site (2026)",
+    "MUV Fitness dropped planned 37th and Grand location (2026)"
+   ],
+   "news_sentiment": "mixed",
+   "news": [
+    "New grocery store envisioned; multifamily proposed on lower South Hill",
+    "A fatal shooting made repeated coverage"
+   ]
+  },
+  "South Perry": {
+   "n_posts": 127,
+   "n_mentions": 127,
+   "mentions_recent_18mo": 45,
+   "mentions_prior_18mo": 46,
+   "momentum_pct": -2,
+   "sentiment": "positive",
+   "trend": "rising",
+   "summary": "South Perry is one of Spokane's most loved small districts, with a walkable business strip, strong community events like the street fair, Pride in Perry, and a farmers market, plus steady new food and drink openings. Residents rave about the vibe but regularly report car prowling, burglaries, and occasional gun incidents nearby.",
+   "themes": [
+    "walkable dining strip",
+    "strong community events",
+    "LGBTQ-friendly identity",
+    "new housing infill",
+    "property crime complaints"
+   ],
+   "watchouts": [
+    "car break-ins and burglary reports",
+    "occasional shootings in surrounding blocks",
+    "one anchor bar drew a boycott over politics"
+   ],
+   "openings": [
+    "Indicana Indian-Mexican fusion opened (Oct 2024)",
+    "Pacific to Palouse wine bar opened (2024)",
+    "40 housing units planned for the district (2026)"
+   ],
+   "news_sentiment": "positive",
+   "news": [
+    "KREM profiled Perry as Spokane's new it neighborhood",
+    "Three separate apartment projects announced (40 units, $2.6M complex, 15 units)",
+    "Blockhouse venue opened",
+    "Four arrests after a deadly shooting made news"
+   ]
+  },
+  "Spokane Valley": {
+   "n_posts": 50,
+   "n_mentions": 50,
+   "mentions_recent_18mo": 50,
+   "mentions_prior_18mo": 0,
+   "momentum_pct": null,
+   "sentiment": "neutral",
+   "trend": "rising",
+   "summary": "Reddit talk is mostly roads and politics, but the pattern underneath is a chain-retail suburb in a multifamily construction boom, with residents joking about the wave of new elevator-less apartment complexes. People asking where to dance or do karaoke get few Valley answers, which suggests nightlife and independent dining remain thin relative to population.",
+   "themes": [
+    "chain retail corridor",
+    "new apartment construction boom",
+    "thin nightlife and independent dining",
+    "chronic arterial road construction",
+    "car-dependent"
+   ],
+   "watchouts": [
+    "Argonne/Sullivan construction disruption",
+    "little walk-in culture, destination trips only"
+   ],
+   "openings": [
+    "city-funded Auto Row marketing push"
+   ],
+   "news_sentiment": "positive",
+   "news": [
+    "Trader Joe's confirmed to open by Halloween",
+    "Capitol Bar & Grill and Dodos opened; Beans & Bind coffee opening",
+    "A family entertainment center closed after two years"
+   ]
+  },
+  "Wandermere": {
+   "n_posts": 25,
+   "n_mentions": 25,
+   "mentions_recent_18mo": 13,
+   "mentions_prior_18mo": 12,
+   "momentum_pct": null,
+   "sentiment": "neutral",
+   "trend": "stable",
+   "summary": "A big-box crossroads (Fred Meyer, Costco orbit) with apartment complexes rather than a neighborhood, and Reddit mentions skew toward parking-lot property crime, car thefts near Blue Point, and traffic on US-395. WSDOT has corridor walking and biking improvements planned, and Remi's diner is the area's warm spot in discussion.",
+   "themes": [
+    "big-box retail node",
+    "car-dependent crossroads",
+    "property crime reports",
+    "US-395 corridor improvements planned"
+   ],
+   "watchouts": [
+    "parking-lot theft and break-ins",
+    "vacant former Albertsons signals soft retail"
+   ],
+   "openings": [],
+   "news_sentiment": "mixed",
+   "news": [
+    "A fatal domestic-violence crash closed the 395 bridge",
+    "Inlander praised Remi's Cafe as a family brunch draw"
+   ]
+  }
+ },
+ "generated": "2026-09-19"
+}
