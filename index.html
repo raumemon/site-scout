@@ -59,6 +59,8 @@
   .section-title { font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-3); margin: 14px 0 6px; }
   .note { font-size: 11.5px; color: var(--ink-3); margin-top: 16px; line-height: 1.5; }
   .popup-title { font-weight: 600; font-size: 13.5px; margin-bottom: 6px; padding-right: 14px; }
+  .popup-rank { font-weight: 400; font-size: 11px; color: var(--ink-3); margin-top: 2px; }
+  .pctchip { font-size: 9.5px; background: #eef3fb; color: var(--accent); border-radius: 4px; padding: 1px 4px; font-weight: 600; }
   .popup-grid { display: grid; grid-template-columns: auto auto; gap: 2px 14px; font-size: 12.5px; min-width: 250px; }
   .popup-grid .k { color: var(--ink-2); }
   .popup-grid .psec { font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-3); margin-top: 5px; }
@@ -83,8 +85,15 @@
   .about-caveat { color: var(--ink-2); font-size: 12.5px; border-top: 1px solid var(--border); padding-top: 10px; }
   #about-close { padding: 8px 18px; font-size: 13.5px; border: none; background: var(--accent); color: #fff; border-radius: 6px; cursor: pointer; }
   #about-open { border: none; background: none; color: var(--accent); cursor: pointer; font-size: 13px; padding: 0 4px; }
-  #compare-panel { margin: 8px 0; overflow-x: auto; }
-  .cmp { border-collapse: collapse; font-size: 11.5px; width: 100%; }
+  #cmp-overlay { position: fixed; inset: 0; background: rgba(20,20,18,.55); z-index: 2000;
+    display: flex; align-items: center; justify-content: center; padding: 16px; }
+  #cmp-card { background: var(--panel); border-radius: 10px; max-width: 720px; width: 100%;
+    max-height: 85vh; overflow-y: auto; padding: 20px 24px; box-shadow: 0 8px 40px rgba(0,0,0,.35); }
+  #cmp-card h2 { margin: 0 0 10px; font-size: 16px; }
+  .cmp-actions { display: flex; gap: 8px; margin-top: 12px; }
+  #cmp-close { padding: 6px 16px; font-size: 12.5px; border: none; background: var(--accent); color: #fff; border-radius: 6px; cursor: pointer; }
+  #compare-panel { overflow-x: auto; }
+  .cmp { border-collapse: collapse; font-size: 12.5px; width: 100%; }
   .cmp th, .cmp td { padding: 3px 6px; text-align: right; border-bottom: 1px solid var(--border); white-space: nowrap; }
   .cmp td:first-child { text-align: left; color: var(--ink-2); }
   .cmp th { font-weight: 600; }
@@ -143,6 +152,16 @@
     <button id="about-close">Got it</button>
   </div>
 </div>
+<div id="cmp-overlay" style="display:none">
+  <div id="cmp-card">
+    <h2>Site comparison</h2>
+    <div id="compare-panel"></div>
+    <div class="cmp-actions">
+      <button id="cmp-close">Close</button>
+      <button id="clear-pins">Clear pins</button>
+    </div>
+  </div>
+</div>
 <div id="app">
   <div id="map"></div>
   <div id="panel">
@@ -187,7 +206,6 @@
       <button id="addr-go">★ Pin</button>
       <button id="compare-go" style="display:none">Compare</button>
     </div>
-    <div id="compare-panel" style="display:none"></div>
     <div class="tabs">
       <button id="t-top" class="active">Top areas</button>
       <button id="t-rec">Recommended</button>
@@ -332,6 +350,28 @@ function fmt(v, money) {
   return money ? "$" + Math.round(v).toLocaleString() : v.toLocaleString();
 }
 
+// sorted value arrays for "top X%" context chips
+const PCT_FIELDS = ["reach_spend_m", "capture_k", "res_walk", "work_walk", "aadt", "bus_departures", "avg_rating", "new_licenses_24mo"];
+let pctSorted = null;
+function buildPct() {
+  pctSorted = {};
+  for (const f of PCT_FIELDS)
+    pctSorted[f] = data.hexes.map(h => h[f]).filter(v => v != null).sort((a, b) => a - b);
+}
+function topPct(field, v) {
+  if (v == null || !pctSorted || !pctSorted[field] || pctSorted[field].length < 100) return "";
+  const arr = pctSorted[field];
+  let lo = 0, hi = arr.length;
+  while (lo < hi) { const m = (lo + hi) >> 1; if (arr[m] < v) lo = m + 1; else hi = m; }
+  const pct = Math.max(1, Math.round(100 * (1 - lo / arr.length)));
+  return `<span class="pctchip">top ${pct}%</span>`;
+}
+function scoreRank(h) {
+  const mine = clientScore(h);
+  let better = 0;
+  for (const x of data.hexes) if (clientScore(x) > mine) better++;
+  return better + 1;
+}
 function weakest(h) {
   return [["demand", h.demand], ["untapped gap", h.gap], ["complements", h.complements],
           ["activity", h.activity], ["traffic exposure", h.exposure_n], ["new openings", h.openings_n]]
@@ -347,18 +387,20 @@ function popupHtml(h) {
   const comps = cn.length
     ? `<div class="popup-comp"><b>Competitors nearby:</b> ${cn.slice(0,6).join(", ")}${cn.length>6?" +"+(cn.length-6)+" more":""}</div>`
     : `<div class="popup-comp"><b>No same-cuisine competitors nearby.</b></div>`;
-  return `<div class="popup-title">${hoodName(h.__lat, h.__lon)} — Score ${clientScore(h)} · Value ${clientValue(h) ?? "—"} · Delivery ${h.delivery}</div>
+  const rank = scoreRank(h);
+  return `<div class="popup-title">${hoodName(h.__lat, h.__lon)} — Score ${clientScore(h)} · Value ${clientValue(h) ?? "—"} · Delivery ${h.delivery}
+      <div class="popup-rank">Ranked #${rank.toLocaleString()} of ${data.hexes.length.toLocaleString()} blocks in the corridor (top ${Math.max(1, Math.round(100 * rank / data.hexes.length))}%)</div></div>
     <div class="popup-grid">
       <span class="psec">Market</span><span></span>
-      <span class="k">Dining spend in reach</span><span class="v">≈$${h.reach_spend_m}M/yr</span>
-      <span class="k">Est. new-site capture</span><span class="v">${h.capture_k != null ? "≈$" + h.capture_k + "K/yr" : "—"}</span>
-      <span class="k">Residents / workers (walk)</span><span class="v">${fmt(h.res_walk)} / ${fmt(h.work_walk)}</span>
+      <span class="k">Dining spend in reach</span><span class="v">≈$${h.reach_spend_m}M/yr ${topPct("reach_spend_m", h.reach_spend_m)}</span>
+      <span class="k">Est. new-site capture</span><span class="v">${h.capture_k != null ? "≈$" + h.capture_k + "K/yr " + topPct("capture_k", h.capture_k) : "—"}</span>
+      <span class="k">Residents / workers (walk)</span><span class="v">${fmt(h.res_walk)} ${topPct("res_walk", h.res_walk)} / ${fmt(h.work_walk)} ${topPct("work_walk", h.work_walk)}</span>
       <span class="k">Pop. in delivery range</span><span class="v">${fmt(h.reach_pop)}</span>
       <span class="k">Underserved (gap)</span><span class="v">${h.gap}</span>
       <span class="psec">Site</span><span></span>
-      <span class="k">Traffic (AADT nearby)</span><span class="v">${fmt(h.aadt)}</span>
+      <span class="k">Traffic (AADT nearby)</span><span class="v">${fmt(h.aadt)} ${topPct("aadt", h.aadt)}</span>
       <span class="k">Bus departures / parking</span><span class="v">${fmt(h.bus_departures)} / ${fmt(h.parking_spaces)}</span>
-      <span class="k">Avg Google rating (area)</span><span class="v">${h.avg_rating != null ? h.avg_rating + "★" : "—"}</span>
+      <span class="k">Avg Google rating (area)</span><span class="v">${h.avg_rating != null ? h.avg_rating + "★ " + topPct("avg_rating", h.avg_rating) : "—"}</span>
       <span class="k">Complements / activity</span><span class="v">${h.complements} / ${h.activity}</span>
       <span class="k">Competition pressure</span><span class="v">${h.competition}</span>
       <span class="k">National chains near</span><span class="v">${h.chains_near}</span>
@@ -651,8 +693,6 @@ const CMP_METRICS = [
   ["Nat. chains near", h => h.chains_near, 1],
 ];
 document.getElementById("compare-go").onclick = () => {
-  const panel = document.getElementById("compare-panel");
-  if (panel.style.display !== "none") { panel.style.display = "none"; return; }
   const pins = sitePins.filter(p => p.h);
   let html = `<table class="cmp"><tr><th></th>${pins.map(p => `<th>${p.label.slice(0, 22)}</th>`).join("")}</tr>`;
   for (const [name, get, dir] of CMP_METRICS) {
@@ -662,15 +702,21 @@ document.getElementById("compare-go").onclick = () => {
     html += `<tr><td>${name}</td>${vals.map(v =>
       `<td class="${v != null && v === best && nums.length > 1 ? "best" : ""}">${v != null ? (typeof v === "number" ? v.toLocaleString() : v) : "—"}</td>`).join("")}</tr>`;
   }
-  html += `</table><button id="clear-pins">Clear pins</button>`;
-  panel.innerHTML = html;
-  panel.style.display = "";
-  document.getElementById("clear-pins").onclick = () => {
-    starLayer.clearLayers(); sitePins.length = 0;
-    savePins();
-    panel.style.display = "none";
-    document.getElementById("compare-go").style.display = "none";
-  };
+  html += `</table>`;
+  document.getElementById("compare-panel").innerHTML = html;
+  document.getElementById("cmp-overlay").style.display = "flex";
+};
+document.getElementById("cmp-close").onclick = () => {
+  document.getElementById("cmp-overlay").style.display = "none";
+};
+document.getElementById("cmp-overlay").onclick = e => {
+  if (e.target === document.getElementById("cmp-overlay")) document.getElementById("cmp-close").click();
+};
+document.getElementById("clear-pins").onclick = () => {
+  starLayer.clearLayers(); sitePins.length = 0;
+  savePins();
+  document.getElementById("cmp-overlay").style.display = "none";
+  document.getElementById("compare-go").style.display = "none";
 };
 document.getElementById("addr-go").onclick = async () => {
   const q = document.getElementById("addr").value.trim();
@@ -744,6 +790,7 @@ Promise.all([
   vibes = v.neighborhoods || {};
   document.getElementById("subtitle").textContent =
     `${d.meta.concept} · Spokane / Coeur d'Alene · ${d.meta.n_hexes} hexes, ${d.meta.n_pois} businesses`;
+  buildPct();
   buildSliders();
   renderTrending();
   render();
