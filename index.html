@@ -605,7 +605,12 @@ function togglePins() {
         radius: 6 + Math.min(16, p.jobs / 900), color: "#fdfdfc", weight: 1.5,
         fillColor: "#0d366b", fillOpacity: 0.55,
       }).bindTooltip(`💼 ≈${p.jobs.toLocaleString()} jobs`, { direction: "top" })
-        .bindPopup(`<div class="popup-title">💼 Employment zone</div><div class="popup-comp">≈${p.jobs.toLocaleString()} jobs within ~0.7 km²${p.anchor ? "<br><b>" + p.anchor + "</b>" : ""}${p.anchor && p.anchor.includes("edical") || p.anchor && (p.anchor.includes("Hospital") || p.anchor.includes("Health") || p.anchor.includes("VA")) ? "<br>24/7 shifts - demand at hours office districts are dead." : ""}</div>`, { maxWidth: 260 }))).addTo(map);
+        .bindPopup(`<div class="popup-title">💼 ${p.anchor || "Employment zone"}</div>
+          <div class="popup-grid">
+            <span class="k">Jobs here</span><span class="v">≈${p.jobs.toLocaleString()} (Census 2022)</span>
+            ${p.mix ? `<span class="k">Who employs them</span><span class="v">${p.mix}</span>` : ""}
+          </div>
+          <div class="popup-comp">${/Hospital|Health|VA|medical/.test(p.anchor || "") ? "24/7 shifts — demand at hours office districts are dead. " : ""}<a href="https://www.google.com/maps/@${p.lat},${p.lon},16z" target="_blank">View area in Google Maps →</a></div>`, { maxWidth: 280 }))).addTo(map);
   }
 }
 function toggleLease() {
